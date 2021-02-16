@@ -11,7 +11,7 @@ Firstly git clone or download this repo and move to the repo folder. Then follow
  
  2. Download the pre-built graphs of all regions in England + Scotland and Wales [HERE](https://figshare.com/articles/dataset/GB_pre-built_graphs_for_multi-modal_routing_with_OTP/14039678) and unzip. OTP enables the creation of multiple routers based on the graphs present in graphs/; therefore if you move to step three with all graphs in the folder it will create as many graphs as are there. This will take a considerable amout of time (depending on your machine), so it is advised to select only the regions of interest and move the other folders out from graphs/.
 
-3. Combine the images and start the containers with ```docker-compose up .```. Before running docker compose you need to change some of the information on the ```docker-compose.yml``` file. Specifically: you might want to modify the number of threads in otp **--maxThreads** *n*, and specify the environment variables (user and password) for rstudio as well as the path to the volume you want to add. By default it will mount the example folder in the repo, just make sure you add your user in the path.
+3. Combine the images and start the containers with ```docker-compose up```. Before running docker compose you need to change some of the information on the ```docker-compose.yml``` file. Specifically: you might want to modify the number of threads in otp **--maxThreads** *n*, and specify the environment variables (user and password) for rstudio as well as the path to the volume you want to add. By default it will mount the example folder in the repo, just make sure you add your user in the path.
 
 4. Go to localhost:8888 to access R studio server. You will find your data in the rstudio folder.
 
