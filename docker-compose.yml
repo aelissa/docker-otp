@@ -28,6 +28,6 @@ services:
       - PASSWORD=
       - USER=
     volumes:
-      - /home/docker-otp/example:/home/alessia/rstudio/
+      - /home/your-user/docker-otp/example:/home/your-user/rstudio/
 
 

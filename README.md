@@ -1,20 +1,20 @@
 This repository contains the docker images and pre-build graphs for multi-modal routing in GB with OpenTripPlanner and R. It relies on Urbica OpenTripPlanner docker image and Rocker/geospatial docker image extended to include OpenTripPlanner R package. 
 
-# How to use this repository
+# How to use this Repository for Multi-modal Routing with OTP and R 
 
-Firstly git clone or download this repo and move to the repo folder. Then follow these two simple steps:
+Firstly git clone or download this repo and move to the repo folder. Then follow these simple steps:
 
 1. Build the two images: 
 
  - the open trip planner docker image with ``` docker build -t aelissa/otp . ```
  - the extended Rocker/geospatial image with ```docker build -t aelissa/otpr - < Dockerfile-otpr```
+ 
+ 2. Download the pre-built graphs of all regions in England + Scotland and Wales from [HERE](https://figshare.com/articles/dataset/GB_pre-built_graphs_for_multi-modal_routing_with_OTP/14039678) and unzip. OTP enables the creation of multiple routers based on the graphs present in graphs/; therefore if you move to step three with all graphs in the folder it will create as many graphs as are there. This will take a considerable amout of time (depending on your machine), so it is advised to select only the regions of interest and move the other folders out from graphs/.
 
-2. Combine the images and start the containers with ```docker-compose up .```. Before running docker compose you need to change some of the information on the ```docker-compose.yml``` file. Specifically: you might want to modify the number of threads in otp **--maxThreads** *n*, and specify the environment variables (user and password) for rstudio as well as the path to the volume you want to add.
+3. Combine the images and start the containers with ```docker-compose up .```. Before running docker compose you need to change some of the information on the ```docker-compose.yml``` file. Specifically: you might want to modify the number of threads in otp **--maxThreads** *n*, and specify the environment variables (user and password) for rstudio as well as the path to the volume you want to add. By default it will mount the example folder in the repo, just make sure you add your user in the path.
 
 
-
-
-# Urbica OpenTripPlanner Docker image
+# How to use Urbica OpenTripPlanner Docker image
 
 [OpenTripPlanner](http://www.opentripplanner.org/) (OTP) is a family of open source software projects that provide passenger information and transportation network analysis services. The core server-side Java component finds itineraries combining transit, pedestrian, bicycle, and car segments through networks built from widely available, open standard OpenStreetMap and GTFS data. This service can be accessed directly via its web API or using a range of Javascript client libraries, including modern reactive modular components targeting mobile platforms.
 
