@@ -13,6 +13,8 @@ Firstly git clone or download this repo and move to the repo folder. Then follow
 
 3. Combine the images and start the containers with ```docker-compose up .```. Before running docker compose you need to change some of the information on the ```docker-compose.yml``` file. Specifically: you might want to modify the number of threads in otp **--maxThreads** *n*, and specify the environment variables (user and password) for rstudio as well as the path to the volume you want to add. By default it will mount the example folder in the repo, just make sure you add your user in the path.
 
+4. Go to localhost:8888 to access R studio server. You will find your data in the rstudio folder.
+
 
 # How to use Urbica OpenTripPlanner Docker image
 
