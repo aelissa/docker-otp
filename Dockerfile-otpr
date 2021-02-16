@@ -1,0 +1,5 @@
+FROM rocker/geospatial
+LABEL maintainer="Alessia Calafiore <aelissa3388@gmail.com>"
+
+RUN R -e "install.packages(c('opentripplanner','RcppSimdJson'),dependencies=TRUE, repos='http://cran.rstudio.com/')"
+
