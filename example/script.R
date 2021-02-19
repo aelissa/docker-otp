@@ -36,38 +36,24 @@ od_lcr<-od_lcr %>%
          lat_w=lat)
 
 m<-od_lcr %>%
-  filter(sameOA==1) %>%
+  filter(sameOA==1) 
+
+fid<-m$`Area of usual residence`
+tid<-m$`Area od workplace`
+
+m<-m %>%
   select(lon_r,lat_r,lon_w,lat_w) %>%
   as.matrix()
 
-fid<-od_lcr$`Area of usual residence`
-tid<-od_lcr$`Area of workplace`
-index<-seq(0,nrow(m),by=90)
-index<-append(index,nrow(m))
 d<-as.POSIXct(as.Date(c("2021-02-15 9:25:16 GMT")))
 
-routing<-NULL
-
-for(i in 1:length(index)){
-  start<-index[i]+1
-  end<-index[i+1]
   route<-otp_plan(otpcon = otpcon,
-                  fromPlace = m[start:end,1:2],
-                  toPlace = m[start:end,3:4],
-                  fromID = fid[start:end],
-                  toID = tid[start:end],
+                  fromPlace = m[,1:2],
+                  toPlace = m[,3:4],
+                  fromID = fid,
+                  toID = tid,
                   mode = c("WALK","BUS"),
                   date_time = d,
                   numItineraries=1,
                   ncores = 90
-  )
-  if(!is.na(route)){
-    if("alerts" %in% colnames(route)){
-      route<-route %>% select(-alerts)
-    }
-    routing<-rbind(routing,route)
-  }else{nw<-append(nw,i)}
-}
-
-write_rds(nw,"nw.rds")
 write_rds(routing,"commuting_bus.rds")
